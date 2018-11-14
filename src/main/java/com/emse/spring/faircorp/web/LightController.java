@@ -20,7 +20,8 @@ public class LightController
 
 
     @GetMapping
-    public List<LightDto> findAll() {
+    public List<LightDto> findAll()
+    {
         return lightDao.findAll()
                 .stream()
                 .map(LightDto::new)
@@ -28,27 +29,34 @@ public class LightController
     }
 
     @GetMapping(path = "/{id}")
-    public LightDto findById(@PathVariable Long id) {
+    public LightDto findById(@PathVariable Long id)
+    {
         return lightDao.findById(id).map(LightDto::new).orElse(null);
     }
 
     @PutMapping(path = "/{id}/switch")
-    public LightDto switchStatus(@PathVariable Long id) {
+    public LightDto switchStatus(@PathVariable Long id)
+    {
         Light light = lightDao.findById(id).orElseThrow(IllegalArgumentException::new);
         light.setStatus(light.getStatus() == Status.ON ? Status.OFF: Status.ON);
         return new LightDto(light);
     }
 
     @PostMapping
-    public LightDto create(@RequestBody LightDto dto) {
+    public LightDto create(@RequestBody LightDto dto)
+    {
         Light light = null;
-        if (dto.getId() != null) {
+        if (dto.getId() != null)
+        {
             light = lightDao.findById(dto.getId()).orElse(null);
         }
 
-        if (light == null) {
+        if (light == null)
+        {
             light = lightDao.save(new Light(roomDao.getOne(dto.getRoomId()).getId(), dto.getLevel(), dto.getStatus()));
-        } else {
+        }
+        else
+        {
             light.setLevel(dto.getLevel());
             light.setStatus(dto.getStatus());
             lightDao.save(light);
