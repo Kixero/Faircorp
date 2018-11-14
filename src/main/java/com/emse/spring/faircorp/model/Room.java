@@ -17,7 +17,7 @@ public class Room
     private Integer level;
     
     @OneToMany
-    private List<Light > lights;
+    private List<Light> lights;
     
     public Room()
     {
@@ -60,5 +60,13 @@ public class Room
         this.level = level;
     }
 
-    public List<Light> getLights() { return this.lights; }
+    public List<Light> getLights()
+    {
+        return lights;
+    }
+
+    public void setLights(List<Light> lights)
+    {
+        this.lights = lights;
+    }
 }

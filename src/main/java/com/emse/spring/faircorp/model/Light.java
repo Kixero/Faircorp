@@ -14,7 +14,7 @@ public class Light {
     private Integer level;
 
     @Column(nullable = false)
-    private Room room;
+    private Long roomId;
     
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
@@ -23,10 +23,10 @@ public class Light {
     public Light() {
     }
     
-    public Light(Room room, Integer level, Status status) {
+    public Light(Long roomId, Integer level, Status status) {
         this.level = level;
         this.status = status;
-        this.room = room;
+        this.roomId = roomId;
     }
     
     public Long getId() {
@@ -51,5 +51,13 @@ public class Light {
     
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public Long getRoom() {
+        return this.roomId;
+    }
+
+    public void setRoom(Long room) {
+        this.roomId = room;
     }
 }

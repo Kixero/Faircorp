@@ -29,7 +29,7 @@ public class LightController
 
     @GetMapping(path = "/{id}")
     public LightDto findById(@PathVariable Long id) {
-        return lightDao.findById(id).map(light -> new LightDto(light)).orElse(null);
+        return lightDao.findById(id).map(LightDto::new).orElse(null);
     }
 
     @PutMapping(path = "/{id}/switch")
@@ -47,7 +47,7 @@ public class LightController
         }
 
         if (light == null) {
-            light = lightDao.save(new Light(roomDao.getOne(dto.getRoomId()), dto.getLevel(), dto.getStatus()));
+            light = lightDao.save(new Light(roomDao.getOne(dto.getRoomId()).getId(), dto.getLevel(), dto.getStatus()));
         } else {
             light.setLevel(dto.getLevel());
             light.setStatus(dto.getStatus());
