@@ -2,4 +2,4 @@ package com.emse.spring.faircorp.model;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface RoomDao extends JpaRepository<Room, Long> {}
+public interface BuildingDao extends JpaRepository<Building, Long> {}
