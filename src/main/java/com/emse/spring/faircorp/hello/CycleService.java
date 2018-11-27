@@ -12,4 +12,8 @@ public class CycleService {
     public CycleService(ConsoleGreetingService consoleGreetingService) {
         this.consoleGreetingService = consoleGreetingService;
     }
+
+    public ConsoleGreetingService getConsoleGreetingService() {
+        return consoleGreetingService;
+    }
 }

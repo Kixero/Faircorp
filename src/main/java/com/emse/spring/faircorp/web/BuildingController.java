@@ -62,11 +62,11 @@ public class BuildingController
     {
         for (Room room : buildingDao.findById(id).orElseThrow(IllegalArgumentException::new).getRooms())
         {
-            for (Light light : roomDao.findById(id).orElseThrow(IllegalArgumentException::new).getLights())
+            for (Light light : roomDao.findById(room.getId()).orElseThrow(IllegalArgumentException::new).getLights())
             {
                 lightDao.delete(light);
             }
-            roomDao.deleteById(id);
+            roomDao.deleteById(room.getId());
         }
         buildingDao.deleteById(id);
     }

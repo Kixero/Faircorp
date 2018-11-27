@@ -1,0 +1,11 @@
+@font-face 
+{
+    font-family: "myFont";
+    src: url("Ubuntu-M.ttf");
+}
+
+*
+{
+    font-family: "myFont";
+}
+
