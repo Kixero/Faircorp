@@ -31,7 +31,7 @@ public class Room
         this.buildingId = buildingId;
     }
     
-    public long getId()
+    public Long getId()
     {
         return id;
     }

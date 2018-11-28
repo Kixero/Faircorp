@@ -7,6 +7,14 @@ public class LightDto {
     private final Long roomId;
     private final Status status;
 
+    public LightDto()
+    {
+        id = 0L;
+        level = 0;
+        roomId = 0L;
+        status = Status.OFF;
+    }
+
     public LightDto(Light light)
     {
         this.id = light.getId();

@@ -7,6 +7,14 @@ public class RoomDto
     private Integer level;
     private Long buildingId;
 
+    public RoomDto()
+    {
+        id = 0L;
+        name = "";
+        level = 0;
+        buildingId = 0L;
+    }
+
     public RoomDto(Room room)
     {
         this.id = room.getId();

@@ -83,14 +83,13 @@ function getBuildings()
     let request = new XMLHttpRequest();
     let buildingsTab = document.getElementById('buildings');
 
-    while(buildingsTab.lastChild.nodeName === 'TR')
-    {
-        buildingsTab.removeChild(buildingsTab.lastChild)
-    }
-
     request.open('GET', apiURL + 'buildings');
     request.onload = function()
     {
+        while(buildingsTab.lastChild.nodeName === 'TR')
+        {
+            buildingsTab.removeChild(buildingsTab.lastChild)
+        }
         let json = JSON.parse(this.response);
         json.forEach(building => { buildingsTab.appendChild(createBuildingRow(building)) });
     };
@@ -102,14 +101,13 @@ function getRooms()
     let request = new XMLHttpRequest();
     let roomsTab = document.getElementById('rooms');
 
-    while(roomsTab.lastChild.nodeName === 'TR')
-    {
-        roomsTab.removeChild(roomsTab.lastChild)
-    }
-
     request.open('GET', apiURL + 'rooms');
     request.onload = function()
     {
+        while(roomsTab.lastChild.nodeName === 'TR')
+        {
+            roomsTab.removeChild(roomsTab.lastChild)
+        }
         let json = JSON.parse(this.response);
         json.forEach(room => { roomsTab.appendChild(createRoomRow(room)) });
     };
@@ -121,14 +119,13 @@ function getLights()
     let request = new XMLHttpRequest();
     let lightsTab = document.getElementById('lights');
 
-    while(lightsTab.lastChild.nodeName === 'TR')
-    {
-        lightsTab.removeChild(lightsTab.lastChild)
-    }
-
     request.open('GET', apiURL + 'lights');
     request.onload = function()
     {
+        while(lightsTab.lastChild.nodeName === 'TR')
+        {
+            lightsTab.removeChild(lightsTab.lastChild)
+        }
         let json = JSON.parse(this.response);
         json.forEach(light => { lightsTab.appendChild(createLightRow(light))});
     };
@@ -189,14 +186,13 @@ function filterLights(roomId)
     let lightsTab = document.getElementById('lights');
     let request = new XMLHttpRequest();
 
-    while(lightsTab.lastChild.nodeName === 'TR')
-    {
-        lightsTab.removeChild(lightsTab.lastChild)
-    }
-
     request.open('GET', apiURL + 'lights');
     request.onload = function()
     {
+        while(lightsTab.lastChild.nodeName === 'TR')
+        {
+            lightsTab.removeChild(lightsTab.lastChild)
+        }
         let json = JSON.parse(this.response);
         json.forEach(light => { 
             if (light.roomId === roomId)
@@ -213,14 +209,13 @@ function filterRooms(buildingId)
     let roomsTab = document.getElementById('rooms');
     let request = new XMLHttpRequest();
 
-    while(roomsTab.lastChild.nodeName === 'TR')
-    {
-        roomsTab.removeChild(roomsTab.lastChild)
-    }
-
     request.open('GET', apiURL + 'rooms');
     request.onload = function()
     {
+        while(roomsTab.lastChild.nodeName === 'TR')
+        {
+            roomsTab.removeChild(roomsTab.lastChild)
+        }
         let json = JSON.parse(this.response);
         json.forEach(room => { 
             if (room.buildingId === buildingId)
@@ -230,6 +225,64 @@ function filterRooms(buildingId)
         });
     };
     request.send()
+}
+
+function addBuilding()
+{
+    let request = new XMLHttpRequest();
+    let buildingsTab = document.getElementById('buildings');
+    let body = JSON.stringify({
+                    "id": 2,
+                    "name": "ME"
+                });
+    request.open('POST', apiURL + 'buildings');
+    request.setRequestHeader("Content-Type", "application/json");
+    request.onload = function()
+    {
+        let building = JSON.parse(this.response);
+        buildingsTab.appendChild(createBuildingRow(building));
+    }
+    request.send(body);
+}
+
+function addRoom()
+{
+    let request = new XMLHttpRequest();
+    let roomsTab = document.getElementById('rooms');
+    let body = JSON.stringify({
+        "id": 2,
+        "name": "Room3",
+        "level": 5,
+        "buildingId": 1
+    });
+    request.open('POST', apiURL + 'rooms');
+    request.setRequestHeader("Content-Type", "application/json");
+    request.onload = function()
+    {
+        let room = JSON.parse(this.response);
+        roomsTab.appendChild(createRoomRow(room));
+    }
+    request.send(body);
+}
+
+function addLight()
+{
+    let request = new XMLHttpRequest();
+    let lightsTab = document.getElementById('lights');
+    let body = JSON.stringify({
+        "id": 3,
+        "level": 10,
+        "roomId": 0,
+        "status": "OFF"
+    });
+    request.open('POST', apiURL + 'lights');
+    request.setRequestHeader("Content-Type", "application/json");
+    request.onload = function()
+    {
+        let light = JSON.parse(this.response);
+        lightsTab.appendChild(createLightRow(light));
+    }
+    request.send(body);
 }
 
 getAll();

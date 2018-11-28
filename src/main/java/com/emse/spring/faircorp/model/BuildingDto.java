@@ -5,6 +5,12 @@ public class BuildingDto
     private Long id;
     private String name;
 
+    public BuildingDto()
+    {
+        id = 0L;
+        name = "";
+    }
+
     public BuildingDto(Building building)
     {
         this.id = building.getId();
