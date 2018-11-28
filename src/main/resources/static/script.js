@@ -1,13 +1,5 @@
 const apiURL = 'http://localhost:8080/api/';
 
-function wait(ms)
-{
-    let d = new Date();
-    let d2 = null;
-    do { d2 = new Date(); }
-    while(d2-d < ms);
-}
-
 function createLightRow(light)
 {
     let row = document.createElement('tr');
@@ -181,24 +173,63 @@ function switchLight(id)
     let request = new XMLHttpRequest();
 
     request.open('PUT', apiURL + 'lights/' + id + '/switch');
+    request.onload = function()
+    {
+        let tab = document.getElementById('lights');
+        let element = tab.rows.namedItem(id);
+        let light = JSON.parse(this.response);
+        tab.insertBefore(createLightRow(light), element);
+        tab.removeChild(element);
+    }
     request.send();
-    wait(60);
-    refresh('light', id)
 }
 
 function filterLights(roomId)
 {
     let lightsTab = document.getElementById('lights');
+    let request = new XMLHttpRequest();
 
     while(lightsTab.lastChild.nodeName === 'TR')
     {
         lightsTab.removeChild(lightsTab.lastChild)
     }
 
-    
+    request.open('GET', apiURL + 'lights');
+    request.onload = function()
+    {
+        let json = JSON.parse(this.response);
+        json.forEach(light => { 
+            if (light.roomId === roomId)
+            {
+                lightsTab.appendChild(createLightRow(light))
+            }
+        });
+    };
+    request.send()
 }
 
 function filterRooms(buildingId)
-{}
+{
+    let roomsTab = document.getElementById('rooms');
+    let request = new XMLHttpRequest();
+
+    while(roomsTab.lastChild.nodeName === 'TR')
+    {
+        roomsTab.removeChild(roomsTab.lastChild)
+    }
+
+    request.open('GET', apiURL + 'rooms');
+    request.onload = function()
+    {
+        let json = JSON.parse(this.response);
+        json.forEach(room => { 
+            if (room.buildingId === buildingId)
+            {
+                roomsTab.appendChild(createRoomRow(room));
+            }
+        });
+    };
+    request.send()
+}
 
 getAll();
