@@ -27,7 +27,6 @@ public class Light {
         this.level = level;
         this.status = status;
         this.roomId = room.getId();
-        room.addLight(this);
     }
     
     public Long getId() {

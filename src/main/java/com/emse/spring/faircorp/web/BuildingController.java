@@ -48,7 +48,6 @@ public class BuildingController
         else
         {
             building.setName(dto.getName());
-            building.setRooms(dto.getRooms());
         }
 
         return new BuildingDto(building);
@@ -60,13 +59,19 @@ public class BuildingController
     @DeleteMapping(path = "/{id}")
     public void delete(@PathVariable Long id)
     {
-        for (Room room : buildingDao.findById(id).orElseThrow(IllegalArgumentException::new).getRooms())
+        for (Room room : roomDao.findAll())
         {
-            for (Light light : roomDao.findById(room.getId()).orElseThrow(IllegalArgumentException::new).getLights())
+            if (room.getId() == id)
             {
-                lightDao.delete(light);
+                for (Light light : lightDao.findAll())
+                {
+                    if (light.getRoom() == room.getId())
+                    {
+                        lightDao.delete(light);
+                    }
+                }
+                roomDao.deleteById(room.getId());
             }
-            roomDao.deleteById(room.getId());
         }
         buildingDao.deleteById(id);
     }

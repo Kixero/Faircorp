@@ -1,20 +1,18 @@
 package com.emse.spring.faircorp.model;
 
-import java.util.List;
-
 public class RoomDto
 {
     private Long id;
     private String name;
     private Integer level;
-    private List<Light> lights;
+    private Long buildingId;
 
     public RoomDto(Room room)
     {
         this.id = room.getId();
         this.name = room.getName();
         this.level = room.getLevel();
-        this.lights = room.getLights();
+        this.buildingId = room.getBuildingId();
     }
 
     public Long getId() {
@@ -29,7 +27,8 @@ public class RoomDto
         return level;
     }
 
-    public List<Light> getLights() {
-        return lights;
+    public Long getBuildingId()
+    {
+        return buildingId;
     }
 }
