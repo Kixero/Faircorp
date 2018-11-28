@@ -35,3 +35,8 @@ tr:hover td
 {
     background-color: #555555;
 }
+
+button
+{
+    align-self: center
+}

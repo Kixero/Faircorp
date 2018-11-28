@@ -70,4 +70,9 @@ public class Room
     {
         this.lights = lights;
     }
+
+    public void addLight(Light light)
+    {
+        lights.add(light);
+    }
 }

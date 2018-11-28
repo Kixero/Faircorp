@@ -23,10 +23,11 @@ public class Light {
     public Light() {
     }
     
-    public Light(Long roomId, Integer level, Status status) {
+    public Light(Room room, Integer level, Status status) {
         this.level = level;
         this.status = status;
-        this.roomId = roomId;
+        this.roomId = room.getId();
+        room.addLight(this);
     }
     
     public Long getId() {

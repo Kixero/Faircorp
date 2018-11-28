@@ -59,6 +59,15 @@ public class RoomController
         return roomDao.findById(id).map(RoomDto::new).orElse(null);
     }
 
+    @GetMapping(path = "/{id}/lights")
+    public List<LightDto> findAllLights(@PathVariable Long id)
+    {
+        return roomDao.findById(id).get().getLights()
+                                         .stream()
+                                         .map(LightDto::new)
+                                         .collect(Collectors.toList());
+    }
+
     @PutMapping(path = "/{id}/switchLight")
     public RoomDto switchStatus(@PathVariable Long id)
     {
