@@ -16,26 +16,43 @@
             Buildings
         </h3>
         <button class='reset' onclick='getBuildings()'>Reset</button>
-        <div id="buildings">
-        </div>
+        <table id="buildings">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+            </tr>
+        </table>
         <button class='add' id='addBuilding' onclick='addBuilding()'>+</button>
         <hr>
         <h3>
             Rooms
         </h3>
         <button class='reset' onclick='getRooms()'>Reset</button>
-        <div id="rooms">
-        </div>
+        <table id="rooms">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Level</th>
+                <th>BuildingID</th>
+            </tr>
+        </table>
         <button class='add' id='addRoom' onclick='addRoom()'>+</button>
         <hr>
         <h3>
             Lights
         </h3>
         <button class='reset' onclick='getLights()'>Reset</button>
-        <div id="lights">
-        </div>
+        <table id="lights">
+            <tr>
+                <th>ID</th>
+                <th>Level</th>
+                <th>RoomID</th>
+                <th>Status</th>
+                <th>Switch</th>
+            </tr>
+        </table>
         <button class='add' id='addLight' onclick='addLight()'>+</button>
         <hr>
-        <script src="scriptVue.js"></script>
+        <script src="script.js"></script>
     </body>
 </html>
