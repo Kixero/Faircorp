@@ -42,6 +42,14 @@ public class LightController
         return new LightDto(light);
     }
 
+    @PutMapping(path = "/{id}/level/{level}")
+    public LightDto setLevel(@PathVariable Long id, @PathVariable int level)
+    {
+        Light light = lightDao.findById(id).orElseThrow(IllegalArgumentException::new);
+        light.setLevel(level);
+        return new LightDto(light);
+    }
+
     @PostMapping
     public LightDto create(@RequestBody LightDto dto)
     {

@@ -1,41 +1,12 @@
-<!DOCTYPE html>
 <html>
     <head>
+        <script src="https://unpkg.com/vue"></script>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="style.css"/>
         <link rel="icon" href="icon.png"/>
-        <script type="text/javascript" src="vue.js"></script>
-        <title>My Control Board</title>
     </head>
+
     <body>
-        <h1>
-            My Control Board
-        </h1>
-        <hr>
-        <h3>
-            Buildings
-        </h3>
-        <button class='reset' onclick='getBuildings()'>Reset</button>
-        <div id="buildings">
-        </div>
-        <button class='add' id='addBuilding' onclick='addBuilding()'>+</button>
-        <hr>
-        <h3>
-            Rooms
-        </h3>
-        <button class='reset' onclick='getRooms()'>Reset</button>
-        <div id="rooms">
-        </div>
-        <button class='add' id='addRoom' onclick='addRoom()'>+</button>
-        <hr>
-        <h3>
-            Lights
-        </h3>
-        <button class='reset' onclick='getLights()'>Reset</button>
-        <div id="lights">
-        </div>
-        <button class='add' id='addLight' onclick='addLight()'>+</button>
-        <hr>
-        <script src="scriptVue.js"></script>
+        <div id="app"></div>
     </body>
 </html>
