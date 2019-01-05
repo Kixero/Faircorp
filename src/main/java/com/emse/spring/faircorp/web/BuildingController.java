@@ -57,7 +57,7 @@ public class BuildingController
     @GetMapping(path = "/{id}")
     public BuildingDto findById( @PathVariable Long id) {return buildingDao.findById(id).map(BuildingDto::new).orElse(null);}
 
-    @GetMapping(path = "/{id}/lights")
+    @GetMapping(path = "/{id}/rooms")
     public List<RoomDto> findAllRooms(@PathVariable Long id)
     {
         ArrayList<Room> list = new ArrayList<>();
