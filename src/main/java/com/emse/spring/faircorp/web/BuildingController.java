@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -55,6 +56,24 @@ public class BuildingController
 
     @GetMapping(path = "/{id}")
     public BuildingDto findById( @PathVariable Long id) {return buildingDao.findById(id).map(BuildingDto::new).orElse(null);}
+
+    @GetMapping(path = "/{id}/lights")
+    public List<RoomDto> findAllRooms(@PathVariable Long id)
+    {
+        ArrayList<Room> list = new ArrayList<>();
+
+        for (Room room : roomDao.findAll())
+        {
+            if (room.getBuildingId() == id)
+            {
+                list.add(room);
+            }
+        }
+
+        return list.stream()
+                .map(RoomDto::new)
+                .collect(Collectors.toList());
+    }
 
     @DeleteMapping(path = "/{id}")
     public void delete(@PathVariable Long id)
