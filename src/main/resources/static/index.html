@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+        <link rel="icon" href="icon.png"/>
+        <script type="text/javascript" src="vue.js"></script>
+        <title>My Control Board</title>
+    </head>
+    <body>
+        <h1>
+            My Control Board
+        </h1>
+        <hr>
+        <h3>
+            Buildings
+        </h3>
+        <button class='reset' onclick='getBuildings()'>Reset</button>
+        <table id="buildings">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+            </tr>
+        </table>
+        <button class='add' id='addBuilding' onclick='addBuilding()'>+</button>
+        <hr>
+        <h3>
+            Rooms
+        </h3>
+        <button class='reset' onclick='getRooms()'>Reset</button>
+        <table id="rooms">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Level</th>
+                <th>BuildingID</th>
+            </tr>
+        </table>
+        <button class='add' id='addRoom' onclick='addRoom()'>+</button>
+        <hr>
+        <h3>
+            Lights
+        </h3>
+        <button class='reset' onclick='getLights()'>Reset</button>
+        <table id="lights">
+            <tr>
+                <th>ID</th>
+                <th>Level</th>
+                <th>RoomID</th>
+                <th>Status</th>
+                <th>Switch</th>
+            </tr>
+        </table>
+        <button class='add' id='addLight' onclick='addLight()'>+</button>
+        <hr>
+        <script src="script.js"></script>
+    </body>
+</html>
