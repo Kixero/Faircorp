@@ -1,4 +1,4 @@
-const apiURL = 'http://localhost:8080/api/';
+const apiURL = 'http://localhost/api/';
 
 function createLightRow(light)
 {
