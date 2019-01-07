@@ -1,4 +1,4 @@
-const apiURL = 'http://localhost/api/';
+const apiURL = 'https://faircorp-anthony-meranger.cleverapps.io/api/';
 
 function createLightRow(light)
 {
