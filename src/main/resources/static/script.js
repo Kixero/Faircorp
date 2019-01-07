@@ -24,8 +24,8 @@ function createLightRow(light)
     onoff.appendChild(button);
 
     row.appendChild(id);
-    row.appendChild(level);
     row.appendChild(roomId);
+    row.appendChild(level);
     row.appendChild(status);
     row.appendChild(onoff);
 
@@ -177,7 +177,7 @@ function switchLight(id)
         let light = JSON.parse(this.response);
         tab.insertBefore(createLightRow(light), element);
         tab.removeChild(element);
-    }
+    };
     request.send();
 }
 
@@ -232,8 +232,8 @@ function addBuilding()
     let request = new XMLHttpRequest();
     let buildingsTab = document.getElementById('buildings');
     let body = JSON.stringify({
-                    "id": 2,
-                    "name": "ME"
+                    "id": -1,
+                    "name": document.getElementById('buildingName').value
                 });
     request.open('POST', apiURL + 'buildings');
     request.setRequestHeader("Content-Type", "application/json");
@@ -241,8 +241,9 @@ function addBuilding()
     {
         let building = JSON.parse(this.response);
         buildingsTab.appendChild(createBuildingRow(building));
-    }
+    };
     request.send(body);
+    document.getElementById('buildingName').value = '';
 }
 
 function addRoom()
@@ -250,10 +251,10 @@ function addRoom()
     let request = new XMLHttpRequest();
     let roomsTab = document.getElementById('rooms');
     let body = JSON.stringify({
-        "id": 2,
-        "name": "Room3",
-        "level": 5,
-        "buildingId": 1
+        "id": -1,
+        "name": document.getElementById('roomName').value,
+        "level": document.getElementById('roomLevel').value,
+        "buildingId": document.getElementById('roomBuildingId').value
     });
     request.open('POST', apiURL + 'rooms');
     request.setRequestHeader("Content-Type", "application/json");
@@ -261,8 +262,11 @@ function addRoom()
     {
         let room = JSON.parse(this.response);
         roomsTab.appendChild(createRoomRow(room));
-    }
+    };
     request.send(body);
+    document.getElementById('roomName').value = '';
+    document.getElementById('roomLevel').value = '';
+    document.getElementById('roomBuildingId').value = '';
 }
 
 function addLight()
@@ -270,9 +274,9 @@ function addLight()
     let request = new XMLHttpRequest();
     let lightsTab = document.getElementById('lights');
     let body = JSON.stringify({
-        "id": 3,
-        "level": 10,
-        "roomId": 0,
+        "id": -1,
+        "level": 0,
+        "roomId": document.getElementById('lightRoomId').value,
         "status": "OFF"
     });
     request.open('POST', apiURL + 'lights');
@@ -281,8 +285,15 @@ function addLight()
     {
         let light = JSON.parse(this.response);
         lightsTab.appendChild(createLightRow(light));
-    }
+    };
     request.send(body);
+    document.getElementById('lightRoomId').value = '';
 }
 
 getAll();
+
+addBuilding();
+
+addRoom();
+
+addLight();

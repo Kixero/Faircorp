@@ -4,7 +4,6 @@
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="style.css"/>
         <link rel="icon" href="icon.png"/>
-        <script type="text/javascript" src="vue.js"></script>
         <title>My Control Board</title>
     </head>
     <body>
@@ -15,20 +14,43 @@
         <h3>
             Buildings
         </h3>
-        <button class='reset' onclick='getBuildings()'>Reset</button>
         <table id="buildings">
+            <tr>
+                <td>
+                    <button class='add' id='addBuilding' onclick='addBuilding()'>+</button>
+                </td>
+                <td>
+                    <input type="text" id="buildingName" name="name"
+                           placeholder="Name">
+                </td>
+            </tr>
             <tr>
                 <th>ID</th>
                 <th>Name</th>
             </tr>
         </table>
-        <button class='add' id='addBuilding' onclick='addBuilding()'>+</button>
         <hr>
         <h3>
             Rooms
         </h3>
-        <button class='reset' onclick='getRooms()'>Reset</button>
         <table id="rooms">
+            <tr>
+                <td>
+                    <button class='add' id='addRoom' onclick='addRoom()'>+</button>
+                </td>
+                <td>
+                    <input type="text" id="roomName" name="name"
+                           placeholder="Name">
+                </td>
+                <td>
+                    <input type="number" id="roomLevel" name="name"
+                           placeholder="Level">
+                </td>
+                <td>
+                    <input type="number" id="roomBuildingId" name="name"
+                           placeholder="Building ID">
+                </td>
+            </tr>
             <tr>
                 <th>ID</th>
                 <th>Name</th>
@@ -36,22 +58,30 @@
                 <th>BuildingID</th>
             </tr>
         </table>
-        <button class='add' id='addRoom' onclick='addRoom()'>+</button>
+        <button class='reset' onclick='getRooms()'>Reset Filter</button>
         <hr>
         <h3>
             Lights
         </h3>
-        <button class='reset' onclick='getLights()'>Reset</button>
         <table id="lights">
             <tr>
+                <td>
+                    <button class='add' id='addLight' onclick='addLight()'>+</button>
+                </td>
+                <td>
+                    <input type="number" id="lightRoomId" name="name"
+                           placeholder="Room ID">
+                </td>
+            </tr>
+            <tr>
                 <th>ID</th>
-                <th>Level</th>
                 <th>RoomID</th>
+                <th>Level</th>
                 <th>Status</th>
                 <th>Switch</th>
             </tr>
         </table>
-        <button class='add' id='addLight' onclick='addLight()'>+</button>
+        <button class='reset' onclick='getLights()'>Reset Filter</button>
         <hr>
         <script src="script.js"></script>
     </body>
