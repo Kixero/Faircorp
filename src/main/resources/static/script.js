@@ -294,6 +294,12 @@ getAll();
 
 addBuilding();
 
+getBuildings();
+
 addRoom();
 
+getRooms();
+
 addLight();
+
+getLights();
