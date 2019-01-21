@@ -68,7 +68,7 @@ public class PositionController
 
         for (int k = 0; k < N; k++)
         {
-            res.add((double) (xmax - xmin) / (double) N * k);
+            res.add((double) (xmax - xmin) / (double) N * (double) k + (double)xmin) ;
         }
         return res;
     }
